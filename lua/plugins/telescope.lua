@@ -23,6 +23,23 @@ return {
     -- [[ Configure Telescope ]]
     -- See `:help telescope` and `:help telescope.setup()`
     require('telescope').setup {
+      extensions = {
+        import = {
+          -- Add imports to the top of the file keeping the cursor in place
+          insert_at_top = true,
+          -- Support additional languages
+          custom_languages = {
+            {
+              -- The regex pattern for the import statement
+              regex = [[^(?:import(?:[\"'\s]*([\w*{}\n, ]+)from\s*)?[\"'\s](.*?)[\"'\s].*)]],
+              -- The Vim filetypes
+              filetypes = { 'typescript', 'typescriptreact', 'javascript', 'react' },
+              -- The filetypes that ripgrep supports (find these via `rg --type-list`)
+              extensions = { 'js', 'ts' },
+            },
+          },
+        },
+      },
       defaults = {
         mappings = {
           i = {
@@ -35,5 +52,6 @@ return {
 
     -- Enable telescope fzf native, if installed
     pcall(require('telescope').load_extension, 'fzf')
+    pcall(require('telescope').load_extension, 'import')
   end,
 }

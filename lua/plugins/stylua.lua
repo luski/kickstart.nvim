@@ -1,0 +1,1 @@
+return {'wesleimp/stylua.nvim'}

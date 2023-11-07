@@ -71,3 +71,20 @@ vim.keymap.set('n', '<leader>st', require('telescope.builtin').treesitter, { des
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+
+-- Telescope import
+vim.keymap.set('n', '<leader>ci', '<cmd>Telescope import<cr>', { desc = 'Telescope [i]mport' })
+
+-- Spectre
+vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
+  desc = 'Toggle Spectre',
+})
+vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+  desc = 'Search current word',
+})
+vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+  desc = 'Search current word',
+})
+vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+  desc = 'Search on current file',
+})
